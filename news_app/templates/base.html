@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+<section class="banner-hero">
+  <div class="container">
+    <h1>QAZAQ <span>NEWS</span></h1>
+    <p>Соңғы жаңалықтар · Қазақстан және әлем</p>
+  </div>
+</section>
+    <header class="header">
+        <div class="primary-header">
+            <div class="container">
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Contact us</a>
+                </nav>
+                <nav>
+                    <div class="header-inner">
+                    <a href="#">
+                        <img src="{% static './img/threads.svg'%}" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="{% static './img/ instagram.svg' %}" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="{% static './img/telegram.svg' %}" alt="">
+                    </a>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="second-header">
+                <div class="container-fluid">
+                    <div class="header-inner">
+                        <a href=" {% url 'admin:index' %}">
+                            <img src="{% static './img/user.svg' %}">
+                            <span>Login</span>
+                        </a>
+                        <a href="#" class="logo">
+                        </a>
+                        <a href="#">
+                            <img src="{% static './img/phone.svg' %}">
+                            <span>+7-777-112-23-33</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="third-header">
+                <div class="container-fluid">
+                    <div class="header-inner">
+                    <nav>
+                        <a href="{% url 'all_news_page' %}">All news</a>
+
+                        {% for category in categories %}
+                        <a href="{% url 'news_by_category' pk=category.pk %}">{{category.name}}</a>
+                        {% endfor %}
+                    </nav>
+                    <a href="{% url 'search_page'%}">
+                        <img src="{% static './img/search.svg' %}">
+                        <span>Search</span>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container">
+        {% block content %}
+        {% endblock%}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+
+            <a href="#" >
+                <img src="{% static './img/logo-white.svg' %}" height="50px">
+            </a>
+            <p>&copy; 2026 TOO Qaznews </p>
+
+        </div>
+    </footer>
+</body>
+</html>
