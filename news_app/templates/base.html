@@ -68,7 +68,7 @@
                         <a href="{% url 'news_by_category' pk=category.pk %}">{{category.name}}</a>
                         {% endfor %}
                     </nav>
-                    <a href="{% url 'search_page'%}">
+                    <a href="{% url 'search_page' %}">
                         <img src="{% static './img/search.svg' %}">
                         <span>Search</span>
                     </a>
